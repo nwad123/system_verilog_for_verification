@@ -144,3 +144,29 @@ A basic layered testbench (pg. 17-19):
      think that this is like the "golden" or "reference" model.
    - Checker: compares the output from the scoreboard and the monitor 
      (in the command layer) to see if the operation is correct.
+4. Scenario Layer: This layer simulates the operations of scenarios that we
+   expect our device to be able to handle.
+5. Test layer: the top level of the testbench that evaluates coverage.
+
+Testbench Environment
+: The layers and blocks of the testbench environment are written once, at 
+  the beginning of the project and shouldn't change too much. They are 
+  dynamically used by different DUTs by injecting different behavior into 
+  each block. (pg. 18)
+
+> Do you need all these layers in your testbench? ... **A complicated 
+> design _requires_ a sophisticated testbench.**
+> (pg. 19)
+
+```systemverilog
+// basic transactor code 
+task run();
+    done = 0;
+    while (!done) begin 
+        // Get the next transaction
+        // Make transformations
+        // Send out transactions
+    end 
+endtask
+```
+
